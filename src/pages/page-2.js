@@ -6,7 +6,7 @@ import '../styles/index.scss'
 
 
 
-const API_URL = `http://localhost:5000/knight`;
+const API_URL = `https://chess-api-cbandara.herokuapp.com/knight`;
 
 const SecondPage = () => {
   const [board, setBoard] = useState({});
