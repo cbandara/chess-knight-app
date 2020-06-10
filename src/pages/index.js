@@ -21,7 +21,8 @@ const IndexPage = () => {
 
     const squareStyles = availablePositions.reduce((acc, cur) => ({
       ...acc,
-      [cur]: { backgroundColor: 'green' }
+      [cur]: { backgroundColor: 'rgba(63, 191, 63, 0.62)' },
+      [square]: { backgroundColor: 'rgba(63, 191, 191, 0.62)' }
     }), {})
 
     setBoard({
@@ -29,7 +30,7 @@ const IndexPage = () => {
       highlights: squareStyles
     })
 
-    console.log(square, availablePositions);
+    console.log(square, squareStyles);
   }
 
   return (
