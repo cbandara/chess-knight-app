@@ -1,7 +1,5 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import Chessboard from "chessboardjsx";
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -9,6 +7,8 @@ const API_URL = `https://chess-api-cbandara.herokuapp.com/knight`;
 
 const IndexPage = () => {
   const [board, setBoard] = useState({});
+  const Chessboard = typeof window !== `undefined` ? require("chessboardjsx").default : null
+
 
   const onSquareClicked = async (square) => {
     const availablePositions = await fetch(API_URL, {
@@ -38,7 +38,7 @@ const IndexPage = () => {
       <h1>Devin Bandara</h1>
       <p>Welcome to your new Gatsby site.</p>
       <p>Now go build something great.</p>
-      <Chessboard position={board.knight} squareStyles={board.highlights} draggable={false} showNotation={true} onSquareClick={onSquareClicked} />
+      {Chessboard && <Chessboard position={board.knight} squareStyles={board.highlights} draggable={false} showNotation={true} onSquareClick={onSquareClicked} />}
 
       <Link to="/page-2/">Go to page 2</Link> <br />
       <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
