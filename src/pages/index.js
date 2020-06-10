@@ -27,7 +27,7 @@ const IndexPage = () => {
         <br />
         <h3>Supplemental Docs</h3>
         <a className="ext-link" href={'https://github.com/cbandara/chess-knight-app'} target="blank">Gatsby App Repository w/ README</a>
-        <a className="ext-link" href={'https://github.com/cbandara/chess-knight-app'} target="blank">Node API Repository w/ README</a>
+        <a className="ext-link" href={'https://github.com/cbandara/chess-api'} target="blank">Node API Repository w/ README</a>
       </div >
 
     </Layout >

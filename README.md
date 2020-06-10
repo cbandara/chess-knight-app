@@ -3,26 +3,77 @@
   Chess - Knight Moves Documentation
 </h1>
 
+### Backend Info
+To view the docs for the Node API that is being called by this application check out the [Chess Node API Documentation](https://github.com/cbandara/chess-knight-app)
 
 ## Challenge
 
-1.  As a user I want to see a chessboard on the screen because I want to interact with it by setting the Knight initial position.
-  * The chessboard doesn't need to be responsive
-  * The user should be able to select a cell by clicking/tapping on it and the cell shopuld be highlighted
+  * As a user I want to see a chessboard on the screen because I want to interact with it by setting the Knight's initial position.
+  * Chessboard doesn't need to be responsive
+  * User should be able to select a cell by clicking/tapping on it and the cell should be highlighted
+  * Highlighted cell should then be sent over to an API.
+  * API should return a list of possible squares in exactly TWO moves.
+  * App should then highlight all the squares returned by the API
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+## Project Structure
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+This project was built with Gatsby and React.
+Here you can see the project file structure:
+```
+/
+|-- /.cache
+|-- /plugins
+|-- /public
+|-- /src
+    |-- /pages
+      |-- 404.js
+      |-- index.js
+      |-- page-2.js
+    |-- /components
+    |-- /styles
+|-- /static
+|-- gatsby-config.js
+|-- gatsby-node.js
+|-- gatsby-ssr.js
+|-- gatsby-browser.js
+|-- package-lock.json
+|-- package.json
+```
+The application starts at /src/pages/index.js Here you will see there are some JSX elements, an SEO component, and a Layout component. All the components can be viewed in /src/components/. You can edit these reusable components however you like or create new ones.
 
+The standard styles that came included with the gatsby starter template are inside the /src/components/layout.css while the secondary styles I added are stored in /src/styles/index.scss . I used scss so you will need to install node-sass and gatsby-plugin-sass.
+
+All plugins used by gatsby can be seen inside gatsby-config.js and all packages used by npm can be seen in package.json
+
+Once you have acquainted yourself with index.js, proceed to the other screen, page-2.js. Page-2 is where the chess boad element lies. To create this chessboard I used a library called chessboard.jsx. It is similar to the popular library chessboard.js but it specially caters to React. 
+
+To learn more about the props and basic usage of chessboard go to the [chessboard.jsx documentation](https://chessboardjsx.com/)
+
+These are the props I'm curently using:
+
+```
+position={board.knight} 
+squareStyles={board.highlights} 
+draggable={false} 
+showNotation={true} 
+onSquareClick={onSquareClicked}
+```
+
+The initial board is blank, the board shows the notation, and when a square is clicked, the onSquareClicked event handler is fired. This event handler, places a white knight on the board as well as sets the highlighted squares supplied by the API.
+
+Feel free to experiment and if you would like to contribute to this project, take a look at the ./CONTRIBUTING.md docs.
+
+To learn more about the algorithm behind the API check out the [Chess Node API Documentation](https://github.com/cbandara/chess-knight-app)
+
+## Installation Instructions
 1.  **Start developing.**
 
     Navigate into your new site’s directory and start it up.
 
     ```shell
-    cd my-default-starter/
+    git clone https://github.com/cbandara/chess-knight-app.git
+    cd chess-knight-app
+    npm install
     gatsby develop
     ```
 
