@@ -9,6 +9,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+import '../styles/index.scss'
+
 import Header from "./header"
 import "./layout.css"
 
@@ -31,11 +33,15 @@ const Layout = ({ children }) => {
           margin: `0 auto`,
           maxWidth: 960,
           padding: `0 1.0875rem 1.45rem`,
+          display: 'flex',
+          flexDirection: 'column'
         }}
       >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
+        <main style={{
+          height: '80vh'
+        }}>{children}</main>
+        <footer className="footer">
+          © Charutha Devin Bandara {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>

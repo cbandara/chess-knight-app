@@ -2,48 +2,35 @@ import React, { useState } from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import '../styles/index.scss'
 
-const API_URL = `https://chess-api-cbandara.herokuapp.com/knight`;
+
+const API_URL = `http://localhost:5000/knight`;
 
 const IndexPage = () => {
-  const [board, setBoard] = useState({});
-  const Chessboard = typeof window !== `undefined` ? require("chessboardjsx").default : null
-
-
-  const onSquareClicked = async (square) => {
-    const availablePositions = await fetch(API_URL, {
-      method: 'post',
-      body: JSON.stringify({ position: square }),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    }).then(res => res.json()).catch(console.error);
-
-    const squareStyles = availablePositions.reduce((acc, cur) => ({
-      ...acc,
-      [cur]: { backgroundColor: 'rgba(63, 191, 63, 0.62)' },
-      [square]: { backgroundColor: 'rgba(63, 191, 191, 0.62)' }
-    }), {})
-
-    setBoard({
-      knight: { [square]: 'wN' },
-      highlights: squareStyles
-    })
-
-    console.log(square, squareStyles);
-  }
-
   return (
     <Layout>
       <SEO title="Home" />
-      <h1>Devin Bandara</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      {Chessboard && <Chessboard position={board.knight} squareStyles={board.highlights} draggable={false} showNotation={true} onSquareClick={onSquareClicked} />}
+      <div className="container">
+        <h1>Information Wizard</h1>
+        <h2>Objective</h2>
+        <p>The objective of this app was to build an interactive chessboard that lets you
+        click on a square and shows you the possible squares a
+        night could land on in exactly TWO moves</p>
+        <h2>Instructions</h2>
+        <p>1.) Press Play</p>
+        <p>2.) A chessboard will load. Click on any square to pick the Knight's initial position</p>
+        <p>3.) The app will then highlight the available squares for the Knight in exactly TWO moves.</p>
 
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </Layout>
+
+        <Link to="/page-2" ><button className="button">PLAY</button></Link>
+        <br />
+        <h3>Supplemental Docs</h3>
+        <a className="ext-link" href={'https://github.com/cbandara/chess-knight-app'} target="blank">Gatsby App Repository w/ README</a>
+        <a className="ext-link" href={'https://github.com/cbandara/chess-knight-app'} target="blank">Node API Repository w/ README</a>
+      </div >
+
+    </Layout >
   )
 }
 
