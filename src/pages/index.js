@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import '../styles/index.scss'
 
 
-const API_URL = `http://localhost:5000/knight`;
+const API_URL = `https://chess-api-cbandara.herokuapp.com/knight`;
 
 const IndexPage = () => {
   return (

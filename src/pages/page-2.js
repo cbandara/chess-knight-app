@@ -40,12 +40,13 @@ const SecondPage = () => {
     <Layout>
       <SEO title="Chess" />
       <div className="container">
+        <Link to="" className="back-btn"><button className="button">BACK</button></Link>
         <h1>Chess Board</h1>
         <h2>Instructions</h2>
         <p>1.) Press Play</p>
         <p>2.) A chessboard will load. Click on any square to pick the Knight's initial position</p>
         <p>3.) The app will then highlight the available squares for the Knight in exactly TWO moves.</p>
-        <Link to="/page-2" ><button className="button">BACK</button></Link>
+
         <br />
         {Chessboard && <Chessboard position={board.knight} squareStyles={board.highlights} draggable={false} showNotation={true} onSquareClick={onSquareClicked} />}
       </div>
